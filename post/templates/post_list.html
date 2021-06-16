@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}
+Latest Blogs
+{% endblock %}
+{% block search %}
+<form class="d-flex" method="GET">
+  <input class="form-control me-2" type="search" placeholder="Search" name="search" />
+  <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+</form>
+{% endblock %} {% block content %}
+<!-- Blog Entries Column -->
+
+{% for post in post_list%}
+<div class="list-group-item mt-3 list-group-item-action">
+
+  <div class="d-flex w-100 justify-content-between">
+    <a style="text-decoration: none" href="{% url 'post_detail' post.slug  %}">
+      <h5 class="mb-1">{{ post.title }}</h5>
+    </a>
+    <small class="text-muted">{{ post.get_date }}</small>
+  </div>
+  <p class="mb-1">{{ post.content|slice:":100" }}.....</p>
+  <small class="text-muted">by {{ post.author }}</small><br />
+  <a href="{% url 'post_detail' post.slug  %}" class="btn mt-2 btn-sm btn-primary">Read More &rarr;</a>
+</div>
+{% endfor %}
+
+<ul class="pagination my-3 small">
+  {% if page_obj.has_previous %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+  </li>
+  {% endif %}
+
+  {% if page_obj.has_next or page_obj.has_previous %}
+  {% for i in page_obj.paginator.page_range %}
+  {% if page_obj.number == i %}
+  <li class="page-item active"><a class="page-link">{{ i }} </a></li>
+  {% else %}
+  <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if page_obj.has_next %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+  </li>
+
+  {% endif %}
+
+</ul>
+{%endblock%}

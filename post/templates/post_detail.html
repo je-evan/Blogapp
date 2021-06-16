@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %}
+{% block title %} Bolg | {{ post.title }} {% endblock %}
+{% block content %}
+<!-- post content -->
+<div class="col-md-9 card mx-auto mt-3 left top">
+  <div class="card-body">
+    <h2>{{ post.title }}</h2>
+    <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
+    {% if post.image %}
+    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}" />
+    {% endif %}
+    <p class="card-text">{{ post.content | safe }}</p>
+  </div>
+</div>
+
+<!-- comment form -->
+<div class="col-md-9 card mx-auto my-3">
+  <div class="card-body">
+    <h3>Leave a comment</h3>
+    <form method="post" style="margin-top: 1.3em">
+      {{ comment_form | crispy }} {% csrf_token %}
+      <button class="mt-2 btn btn-outline-secondary" type="submit">
+        Comment
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- comments -->
+<div class="col-md-9 card mx-auto mt-3">
+  <div class="card-body">
+    <h4>{{ comments.count }} comments</h4>
+    {% for cmnt in comments %}
+    <div class="comments border mt-3" style="padding: 10px">
+      <p class="text_muted">{{ cmnt.message }} | <small>{{ cmnt.commented_by.username }} {{ cmnt.get_date }}</small></p>
+      </p>
+      <p>
+        <a class="btn btn-sm" data-bs-toggle="collapse" href="#replies{{cmnt.id}}" role="button" aria-expanded="false"
+          aria-controls="replies{{cmnt.id}}">
+          {{ cmnt.replies.count }} replies
+        </a>
+        <button class="btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#reply{{cmnt.id}}"
+          aria-expanded="false" aria-controls="reply{{cmnt.id}}">
+          <i class="fas fa-reply"></i> Reply
+        </button>
+      </p>
+      </p>
+
+      <div class="collapse" id="reply{{cmnt.id}}">
+        <div class="card card-body">
+          <form method="post" style="margin-top: 1.3em">
+            {{ comment_form | crispy }} {% csrf_token %}
+            <input type="hidden" name="reply" value="{{cmnt.id}}" />
+            <button class="btn btn-sm btn-outline-secondary mt-2" type="submit">Reply</button>
+          </form>
+        </div>
+      </div>
+      <div class="collapse" id="replies{{cmnt.id}}">
+        <div class="card card-body">
+          {% for rply in replies %}
+          {% if rply.reply_of.id == cmnt.id %}
+          <div class="reply border mt-2 mx-2 px-2 py-2">
+            <p class="m-0">{{ rply.message }} | <small>{{ rply.commented_by.username }} {{ rply.get_date }}</small></p>
+          </div>
+          {% endif%}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
