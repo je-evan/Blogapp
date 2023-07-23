@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('post.urls')),
     path('user/', include('user.urls')),
     path('tinymce/', include('tinymce.urls')),
+    path('tools/', include('tools.urls')),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

@@ -25,6 +25,7 @@ ALLOWED_HOSTS = ['jeevandhakal.pythonanywhere.com']
 INSTALLED_APPS = [
     'post.apps.PostConfig',
     'user.apps.UserConfig',
+    'tools.apps.ToolsConfig',
     'crispy_forms',
     'tinymce',
     'django.contrib.admin',
