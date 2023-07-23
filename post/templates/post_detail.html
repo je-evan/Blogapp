@@ -2,19 +2,16 @@
 {% block title %} Bolg | {{ post.title }} {% endblock %}
 {% block content %}
 <!-- post content -->
-<div class="col-md-9 card mx-auto mt-3 left top">
-  <div class="card-body">
+<div class="col-md-9 card mx-auto mt-3 left top border-0">
+  <div id="post-body" class="card-body">
     <h2>{{ post.title }}</h2>
     <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
-    {% if post.image %}
-    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}" />
-    {% endif %}
     <p class="card-text">{{ post.content | safe }}</p>
   </div>
 </div>
 
 <!-- comment form -->
-<div class="col-md-9 card mx-auto my-3">
+<div class="col-md-9 card mx-auto my-3 border-0">
   <div class="card-body">
     <h3>Leave a comment</h3>
     <form method="post" style="margin-top: 1.3em">
@@ -27,7 +24,7 @@
 </div>
 
 <!-- comments -->
-<div class="col-md-9 card mx-auto mt-3 mb-5">
+<div class="col-md-9 card mx-auto mt-3 mb-5 border-0">
   <div class="card-body">
     <h4>{{ comments.count }} comments</h4>
     {% for cmnt in comments %}
@@ -46,7 +43,7 @@
       </p>
       </p>
 
-      <div class="collapse" id="reply{{cmnt.id}}">
+      <div class="collapse" id="reply{{cmnt.id}} border-0">
         <div class="card card-body">
           <form method="post" style="margin-top: 1.3em">
             {{ comment_form | crispy }} {% csrf_token %}
@@ -55,7 +52,7 @@
           </form>
         </div>
       </div>
-      <div class="collapse" id="replies{{cmnt.id}}">
+      <div class="collapse" id="replies{{cmnt.id}} border-0">
         <div class="card card-body">
           {% for rply in replies %}
           {% if rply.reply_of.id == cmnt.id %}

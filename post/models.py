@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
 from django.utils import timezone
+from tinymce import models as tiny_models
 
 STATUS = (
     (0,"Draft"),
@@ -13,8 +14,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now= True)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
-    content = models.TextField()
+    content = tiny_models.HTMLField()
     created_on = models.DateTimeField(default=timezone.now)
     status = models.IntegerField(choices=STATUS, default=0)
 

@@ -3,7 +3,7 @@ from .models import Post,Comment
 from django.utils.text import slugify
 
 class PostAdmin(admin.ModelAdmin):
-    fields = ('title', 'image', 'content', 'status')
+    fields = ('title', 'content', 'status')
     list_display = ('title', 'author', 'status','created_on')
     list_filter = ("status",)
     search_fields = ['title', 'content']
@@ -16,7 +16,7 @@ class PostAdmin(admin.ModelAdmin):
 
     def publish_post(self, request, queryset):
         queryset.update(status=1)
-  
+
 admin.site.register(Post, PostAdmin)
 
 @admin.register(Comment)

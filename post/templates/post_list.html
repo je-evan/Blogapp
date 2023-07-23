@@ -8,20 +8,17 @@ Latest Blogs
   <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
 </form>
 {% endblock %} {% block content %}
+
 <!-- Blog Entries Column -->
-
 {% for post in post_list%}
-<div class="list-group-item mt-3 list-group-item-action">
-
-  <div class="d-flex w-100 justify-content-between">
+<div id="post_list" class="list-group-item mt-3 bg-light rounded border-0">
     <a style="text-decoration: none" href="{% url 'post_detail' post.slug  %}">
       <h5 class="mb-1">{{ post.title }}</h5>
     </a>
-    <small class="text-muted">{{ post.get_date }}</small>
-  </div>
-  <p class="mb-1">{{ post.content|slice:":100" }}.....</p>
-  <small class="text-muted">by {{ post.author }}</small><br />
-  <a href="{% url 'post_detail' post.slug  %}" class="btn mt-2 btn-sm btn-primary">Read More &rarr;</a>
+    <div class="d-flex w-100 justify-content-start">
+        <small class="text-muted">by {{ post.author }},</small>
+        <small id="date" class="text-muted ms-1">{{ post.get_date }}</small>
+    </div>
 </div>
 {% endfor %}
 
