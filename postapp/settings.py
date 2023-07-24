@@ -17,17 +17,22 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = ['jeevandhakal.pythonanywhere.com']
+ALLOWED_HOSTS = ['jeevandhakal.pythonanywhere.com', "localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'post.apps.PostConfig',
-    'user.apps.UserConfig',
-    'tools.apps.ToolsConfig',
+    #locals
+    'post',
+    'user',
+    'tools',
+
+    # others
     'crispy_forms',
     'tinymce',
+
+    #django defaults
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,19 +75,22 @@ WSGI_APPLICATION = 'postapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
+default_database = {
+        'ENGINE': os.environ.get('DB_ENGINE'),
         'NAME': os.environ.get('DB_NAME'),
         'HOST': os.environ.get('DB_HOST'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'PORT': '',
-        'OPTIONS': {
-        'sql_mode': 'traditional',
+        'PORT': os.environ.get('DB_PORT'),
     }
-    }
+
+if os.environ.get('ENV') != 'DEV':
+    default_database['OPTIONS'] = {
+            'sql_mode': 'traditional',
+        }
+
+DATABASES = {
+    'default': default_database,
 }
 
 

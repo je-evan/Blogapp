@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  <script src="https://kit.fontawesome.com/1d3dd67706.js"></script>
+  <script src="https://kit.fontawesome.com/46db387ce0.js" crossorigin="anonymous"></script>
   <style>
         body {
             margin:0;
@@ -15,10 +15,6 @@
         img {
             max-width:100%!important;
             height:auto!important;
-        }
-
-        #date{
-            min-width:50px!important;"
         }
 
         @media screen and (max-width: 400px) {
@@ -112,6 +108,18 @@
     setTimeout(function () {
       $("#message").fadeOut();
     }, 5000);
+
+    function copyToClipboard(element) {
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val($(element).text()).select();
+      document.execCommand("copy");
+      $temp.remove();
+    }
+
+    function toggleIcon(element) {
+      $(element).removeClass("fa-regular fa-copy text-primary").addClass("fa-solid fa-check text-success")
+    }
   </script>
 </body>
 
