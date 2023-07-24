@@ -6,7 +6,7 @@ File Converter {% endblock %} {% block content %}
     {% csrf_token %}
     <div class="d-flex .flex-sm-row align-items-center justify-content-center mt-5">
       <label id="label" for="type" class="me-2 fs-3">Converter type:</label>
-      <select class="form-select me-2" style="width:120px" name="type">
+      <select id="select" class="form-select me-2" style="width:115px!important" name="type">
         <option value="json2csv">Json to CSV</option>
         <option value="html2pdf">HTML to PDF</option>
       </select>
