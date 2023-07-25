@@ -4,68 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'image/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'image//favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'image/site.webmanifest' %}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <script src="https://kit.fontawesome.com/46db387ce0.js" crossorigin="anonymous"></script>
-  <style>
-        body {
-            margin:0;
-            padding:0;
-        }
-        img {
-            max-width:100%!important;
-            height:auto!important;
-        }
-
-        @media screen and (max-width: 400px) {
-            #post_list h5 {
-              font-size:1rem;
-            }
-            #label {
-              font-size: 1rem!important;
-            }
-            #pass_select {
-                width:auto!important;
-            }
-            #select {
-                min-width:145px!important;
-            }
-            h1 {
-                font-size:1.4rem;
-            }
-            h2 {
-                font-size:1.3rem;
-            }
-            h3 {
-                font-size:1.1rem;
-            }
-            h4 {
-                font-size:1rem;
-            }
-            h5 {
-                font-size:.9rem;
-            }
-            h6 {
-                font-size:.8rem;
-            }
-            #post_list {
-                padding-left:1rem;
-                padding-right:1rem;
-            }
-            #container{
-                width:90%!important;
-            }
-            #nav-bar {
-                padding-left:1rem!important;
-                padding-right:1rem!important;
-            }
-        }
-  </style>
-  <title>
-
-    {% block title %}
-    {% endblock %}
-  </title>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="description" content="Blogs and Tools shared by Jeevan Dhakal">
+  <meta name="keywords" content="Jeevan, Jeevan Dhakal, JD, Developer, Nepal, Django, Python, Machine Learning, ML, AI, Data Science"/>
+  {% include 'structure_data.html' %}
 </head>
 
 <body>
@@ -113,23 +62,6 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    setTimeout(function () {
-      $("#message").fadeOut();
-    }, 5000);
-
-    function copyToClipboard(element) {
-      var $temp = $("<input>");
-      $("body").append($temp);
-      $temp.val($(element).text()).select();
-      document.execCommand("copy");
-      $temp.remove();
-    }
-
-    function toggleIcon(element) {
-      $(element).removeClass("fa-regular fa-copy text-primary").addClass("fa-solid fa-check text-success")
-    }
-  </script>
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
-
 </html>
