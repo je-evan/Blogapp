@@ -8,9 +8,9 @@ from os import remove
 def html2pdf(html_file):
     options = {
         'page-size': 'A4',
-        'margin-top': '0.75in',
+        'margin-top': '0.5in',
         'margin-right': '0.75in',
-        'margin-bottom': '0.75in',
+        'margin-bottom': '0.5in',
         'margin-left': '0.75in',
     }
     FileSystemStorage(location=settings.MEDIA_ROOT).save(html_file.name, html_file)
