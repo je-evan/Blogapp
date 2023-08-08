@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
-ALLOWED_HOSTS = ['jeevandhakal.pythonanywhere.com', "localhost"]
+ALLOWED_HOSTS = ['jeevandhakal.pythonanywhere.com', "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # others
     'crispy_forms',
     'tinymce',
+    'corsheaders',
 
     #django defaults
     'django.contrib.admin',
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -125,6 +127,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+CORS_ALLOWED_ORIGINS = [
+    'https://www.dhakaljeevan.com.np' # Add the frontend URL from where requests will be made
+    # Add more allowed origins if needed
+]
 
 
 # Static files (CSS, JavaScript, Images)

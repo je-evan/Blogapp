@@ -57,15 +57,16 @@ def subscribe(request):
         return JsonResponse(data, safe=False)
 
     if (request.method == "POST"):
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-
+        body = json.loads(request.body.decode("utf-8"))
+        name = body.get('name')
+        email = body.get('email')
+        message = body.get('message')
         try:
             send_email(name, message, email)
             data = {"message": "Email was sent. I'll contact you back later."}
+            return JsonResponse(data)
         except:
             data = {"message": "something went wrong, email was not sent!"}
-       
-        # send json response with new object
-        return JsonResponse(data, safe=False)
+            return JsonResponse(data, status=400)
+
+        
