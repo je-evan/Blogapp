@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+        }
+        .message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="logo">
+            <img src="{% static 'image/favicon-32x32.png' %}" alt="Jeevan Dhakal">
+        </div>
+        <div class="message">
+            <p>Hello {{name}},</p>
+            <p>Thank you for reaching out to me through my portfolio website. I appreciate your interest and the opportunity to connect.</p>
+            <p>I have received your email and will be reviewing the details you've provided. I will get back to you as soon as possible, usually within 24 hours.</p>
+            <p>In the meantime, if you have any further questions or need additional information, please don't hesitate to reach out.</p>
+            <p>Thank you once again for considering my services. Looking forward to the possibility of working together.</p>
+            <p>Best regards,</p>
+            <p>Jeevan Dhakal</p>
+            <p>Contact: +977 986-7321296</p>
+            <p>Email: dhakaljeevan165@gmail.com</p>
+        </div>
+    </div>
+</body>
+</html>
