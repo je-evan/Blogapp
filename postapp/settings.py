@@ -128,10 +128,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
-    'https://www.dhakaljeevan.com.np' # Add the frontend URL from where requests will be made
-    # Add more allowed origins if needed
+    'https://www.dhakaljeevan.com.np',
 ]
 
 

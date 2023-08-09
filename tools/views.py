@@ -65,8 +65,9 @@ def subscribe(request):
             send_email(name, message, email)
             data = {"message": "Email was sent. I'll contact you back later."}
             return JsonResponse(data)
-        except:
+        except Exception as e:
             data = {"message": "something went wrong, email was not sent!"}
+            print(e)
             return JsonResponse(data, status=400)
 
         

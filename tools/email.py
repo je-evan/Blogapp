@@ -17,7 +17,7 @@ def send_email(name, message, recipient):
    msg_for_me['To'] = sender
 
    # Render the HTML email template with dynamic data
-   html_message = render_to_string('email_template.html', {'name': name})
+   html_message = render_to_string('email.html', {'name': name})
    
    # Set up the MIME object
    msg_for_client = MIMEMultipart('alternative')
