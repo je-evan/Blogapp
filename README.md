@@ -14,9 +14,18 @@ Welcome to the Django Blog App with TinyMCE integration! This app provides a pla
 
 1. Clone this repository to your local machine.
 2. Create a virtual environment and activate it:
-3. Install the required packages:
-4. Apply migrations to set up the database:
-5. Run the development server:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate # On Windows: venv\Scripts\activate
+4. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+6. Apply migrations to set up the database:
+   ```bash
+   python manage.py migrate
+8. Run the development server:
+   ```bash
+   python manage.py runserver
 
 ## Usage
 
