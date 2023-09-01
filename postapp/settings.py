@@ -19,7 +19,6 @@ DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['jeevandhakal.pythonanywhere.com', "localhost", "127.0.0.1"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -132,6 +131,7 @@ USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = [
     'https://www.dhakaljeevan.com.np',
+    'localhost'
 ]
 
 
