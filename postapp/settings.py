@@ -131,7 +131,7 @@ USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = [
     'https://www.dhakaljeevan.com.np',
-    'localhost'
+    'http://localhost:5500'
 ]
 
 
