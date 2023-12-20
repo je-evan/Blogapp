@@ -7,14 +7,14 @@ from .download import download_file
 from .html2pdf import html2pdf
 
 from django.http import JsonResponse
-from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from .email import send_email
 import json
 
 from django.shortcuts import render
 from .forms import ReviewForm  # Assuming you have a form for the textarea
-from .sentiment_analysis import predict_sentiment 
+from .sentiment_analysis import predict_sentiment
+from tools.apps import ToolsConfig
 
 
 class PasswordGeneratorView(View):
@@ -81,7 +81,7 @@ def analyze_sentiment(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             new_review = form.cleaned_data['review']
-            sentiment = predict_sentiment(new_review)
+            sentiment = predict_sentiment(ToolsConfig.model, ToolsConfig.tokenizer, new_review)
 
     else:
         form = ReviewForm()
