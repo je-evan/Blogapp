@@ -12,6 +12,10 @@ from django.views.decorators.csrf import csrf_exempt
 from .email import send_email
 import json
 
+from django.shortcuts import render
+from .forms import ReviewForm  # Assuming you have a form for the textarea
+from .sentiment_analysis import predict_sentiment 
+
 
 class PasswordGeneratorView(View):
     template_name = "password_generator.html"
@@ -70,4 +74,16 @@ def subscribe(request):
             print(e)
             return JsonResponse(data, status=400)
 
-        
+def analyze_sentiment(request):
+    sentiment = None
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            new_review = form.cleaned_data['review']
+            sentiment = predict_sentiment(new_review)
+
+    else:
+        form = ReviewForm()
+
+    return render(request, 'analyze_sentiment.html', {'form': form, 'sentiment': sentiment})

@@ -8,7 +8,7 @@ from django.db.models import Q
 
 class PostList(generic.ListView):
     template_name = 'post_list.html'
-    paginate_by = 5
+    paginate_by = 6
     
     def get_queryset(self):
         search = self.request.GET.get('search', '')

@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <script src="https://kit.fontawesome.com/46db387ce0.js" crossorigin="anonymous"></script>
   <title>{% block title %}{% endblock %}</title>
-  <meta name="description" content="Blogs and Tools shared by Jeevan Dhakal">
-  <meta name="keywords" content="Jeevan, Jeevan Dhakal, JD, Developer, Nepal, Django, Python, Machine Learning, ML, AI, Data Science"/>
+  <meta name="description" content="{% block description %} {% endblock %} Blogs and Tools shared by Jeevan Dhakal">
+  <meta name="keywords" content="Jeevan, Jeevan Dhakal, JD, Developer, Back-end, Nepal, Django, Python, Machine Learning, ML, AI, Data Science"/>
   {% include 'structure_data.html' %}
 </head>
 

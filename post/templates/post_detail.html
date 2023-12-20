@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %}
 {% block title %} Bolg | {{ post.title }} {% endblock %}
+{% block description %} {{ post.title }} {% endblock %}
 {% block content %}
 <!-- post content -->
 <div class="col-md-9 card mx-auto mt-3 left top border-0">

@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %} Tools |
+File Converter {% endblock %} 
+{% block description %} File Converter: Json to CSV, HTML to PDF {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Sentiment Analysis</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input type="submit" value="Analyze">
+    </form>
+
+    {% if sentiment %}
+        <h2>
+            Predicted Sentiment: <span class="{% if sentiment == 'positive'%}text-success{% else %}text-danger{% endif %}">
+                {{ sentiment }}
+                </span>
+            </h2>
+    {% endif %}
+</div>
+{% endblock %}

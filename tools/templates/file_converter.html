@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %} Tools |
-File Converter {% endblock %} {% block content %}
+File Converter {% endblock %} 
+{% block description %} File Converter: Json to CSV, HTML to PDF {% endblock %}
+{% block content %}
 <div class="container">
   <h1 class="text-center">File Converter</h1>
   <form method="post" enctype="multipart/form-data">
